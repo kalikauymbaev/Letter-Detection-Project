@@ -1,0 +1,626 @@
+{
+    "_allocate_inputs": 4,
+    "_allocate_outputs": 4,
+    "cli_parameters": "generate --name network -m /Users/m1pro/trained_lstm/mnist_cnn.int8.onnx --type onnx --compression none --verbosity 1 --workspace /var/folders/69/dh4hm0sx5gd_f0nj9n0j3_qh0000gn/T/mxAI_workspace204557825515831992792586518563013 --output /Users/m1pro/.stm32cubemx/network_output --allocate-inputs --series stm32f4 --allocate-outputs",
+    "cli_version": {
+        "major": 1,
+        "micro": 0,
+        "minor": 7
+    },
+    "cli_version_str": "1.7.0",
+    "code_size": 0,
+    "compression": {
+        "factor": null,
+        "layers": {}
+    },
+    "date_time": "Fri Dec  5 15:25:32 2025",
+    "error": 0,
+    "error_str": [],
+    "exec_cmd": "generate",
+    "exec_duration": 0.0,
+    "hash": "cab2baa22cf274804c4436030f0dcd70",
+    "inputs": [
+        "input"
+    ],
+    "layers": [
+        {
+            "c_id": [
+                0
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 784,
+                    "fmt": {
+                        "format": "uint8_t"
+                    },
+                    "shape": [
+                        28,
+                        28,
+                        1,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [],
+            "name": "input",
+            "original": "",
+            "type": "Input"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 10,
+                "psize": 40,
+                "rom_size": 0
+            },
+            "id": 1,
+            "inputs": [],
+            "name": "fc_bias_const",
+            "original": "DequantizeLinear",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 1280,
+                "psize": 5120,
+                "rom_size": 0
+            },
+            "id": 2,
+            "inputs": [],
+            "name": "fc_weight_DequantizeLinear_Output_const",
+            "original": "DequantizeLinear",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 1568,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [
+                "input"
+            ],
+            "name": "input_QuantizeLinear_Output",
+            "original": "QuantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 1568,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 10,
+            "inputs": [
+                "input_QuantizeLinear_Output"
+            ],
+            "name": "input_DequantizeLinear_Output",
+            "original": "DequantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 225824,
+                "n_params": 320,
+                "psize": 1280,
+                "rom_output": {
+                    "c_size": 6272,
+                    "fmt": {
+                        "format": "int8_t"
+                    },
+                    "shape": [
+                        14,
+                        14,
+                        32,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 11,
+            "inputs": [
+                "input_DequantizeLinear_Output"
+            ],
+            "name": "_Relu_output_0",
+            "original": "Conv",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 50176,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 12,
+            "inputs": [
+                "_Relu_output_0"
+            ],
+            "name": "_Relu_output_0_QuantizeLinear_Output",
+            "original": "QuantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 50176,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 13,
+            "inputs": [
+                "_Relu_output_0_QuantizeLinear_Output"
+            ],
+            "name": "_Relu_output_0_DequantizeLinear_Output",
+            "original": "DequantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [
+                1
+            ],
+            "extras": {
+                "n_macc": 25088,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 416
+            },
+            "id": 14,
+            "inputs": [
+                "_Relu_output_0_DequantizeLinear_Output"
+            ],
+            "name": "_MaxPool_output_0",
+            "original": "MaxPool",
+            "type": "Pool"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 12544,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 15,
+            "inputs": [
+                "_MaxPool_output_0"
+            ],
+            "name": "_MaxPool_output_0_QuantizeLinear_Output",
+            "original": "QuantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 12544,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 16,
+            "inputs": [
+                "_MaxPool_output_0_QuantizeLinear_Output"
+            ],
+            "name": "_MaxPool_output_0_DequantizeLinear_Output",
+            "original": "DequantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [
+                2
+            ],
+            "extras": {
+                "n_macc": 3612736,
+                "n_params": 18496,
+                "psize": 73984,
+                "rom_output": {
+                    "c_size": 3136,
+                    "fmt": {
+                        "format": "int8_t"
+                    },
+                    "shape": [
+                        7,
+                        7,
+                        64,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 17,
+            "inputs": [
+                "_MaxPool_output_0_DequantizeLinear_Output"
+            ],
+            "name": "_Relu_1_output_0",
+            "original": "Conv",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 25088,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 18,
+            "inputs": [
+                "_Relu_1_output_0"
+            ],
+            "name": "_Relu_1_output_0_QuantizeLinear_Output",
+            "original": "QuantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 25088,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 19,
+            "inputs": [
+                "_Relu_1_output_0_QuantizeLinear_Output"
+            ],
+            "name": "_Relu_1_output_0_DequantizeLinear_Output",
+            "original": "DequantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [
+                3
+            ],
+            "extras": {
+                "n_macc": 12544,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 18688
+            },
+            "id": 20,
+            "inputs": [
+                "_Relu_1_output_0_DequantizeLinear_Output"
+            ],
+            "name": "_MaxPool_1_output_0",
+            "original": "MaxPool",
+            "type": "Pool"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 6272,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 21,
+            "inputs": [
+                "_MaxPool_1_output_0"
+            ],
+            "name": "_MaxPool_1_output_0_QuantizeLinear_Output",
+            "original": "QuantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 6272,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 22,
+            "inputs": [
+                "_MaxPool_1_output_0_QuantizeLinear_Output"
+            ],
+            "name": "_MaxPool_1_output_0_DequantizeLinear_Output",
+            "original": "DequantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [
+                4,
+                5
+            ],
+            "extras": {
+                "n_macc": 3612800,
+                "n_params": 73856,
+                "psize": 295424,
+                "rom_output": {
+                    "c_size": 6272,
+                    "fmt": {
+                        "format": "int8_t"
+                    },
+                    "shape": [
+                        7,
+                        7,
+                        128,
+                        1
+                    ]
+                },
+                "rom_size": 74240
+            },
+            "id": 23,
+            "inputs": [
+                "_MaxPool_1_output_0_DequantizeLinear_Output"
+            ],
+            "name": "_Relu_2_output_0",
+            "original": "Conv",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 12544,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 24,
+            "inputs": [
+                "_Relu_2_output_0"
+            ],
+            "name": "_Relu_2_output_0_QuantizeLinear_Output",
+            "original": "QuantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 12544,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 25,
+            "inputs": [
+                "_Relu_2_output_0_QuantizeLinear_Output"
+            ],
+            "name": "_Relu_2_output_0_DequantizeLinear_Output",
+            "original": "DequantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [
+                6
+            ],
+            "extras": {
+                "n_macc": 6272,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 128,
+                    "fmt": {
+                        "format": "int8_t"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        128,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 26,
+            "inputs": [
+                "_Relu_2_output_0_DequantizeLinear_Output"
+            ],
+            "name": "_GlobalAveragePool_output_0",
+            "original": "GlobalAveragePool",
+            "type": "Pool"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 256,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 27,
+            "inputs": [
+                "_GlobalAveragePool_output_0"
+            ],
+            "name": "_GlobalAveragePool_output_0_QuantizeLinear_Output",
+            "original": "QuantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 256,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 28,
+            "inputs": [
+                "_GlobalAveragePool_output_0_QuantizeLinear_Output"
+            ],
+            "name": "_GlobalAveragePool_output_0_DequantizeLinear_Output",
+            "original": "DequantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 29,
+            "inputs": [
+                "_GlobalAveragePool_output_0_DequantizeLinear_Output"
+            ],
+            "name": "_Flatten_output_0",
+            "original": "Flatten",
+            "type": "Reshape"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 256,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 30,
+            "inputs": [
+                "_Flatten_output_0"
+            ],
+            "name": "_Flatten_output_0_QuantizeLinear_Output",
+            "original": "QuantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 256,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 31,
+            "inputs": [
+                "_Flatten_output_0_QuantizeLinear_Output"
+            ],
+            "name": "_Flatten_output_0_DequantizeLinear_Output",
+            "original": "DequantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [
+                7,
+                8
+            ],
+            "extras": {
+                "n_macc": 1290,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 10,
+                    "fmt": {
+                        "format": "int8_t"
+                    },
+                    "shape": [
+                        10,
+                        1
+                    ]
+                },
+                "rom_size": 1320
+            },
+            "id": 32,
+            "inputs": [
+                "_Flatten_output_0_DequantizeLinear_Output",
+                "fc_weight_DequantizeLinear_Output_const",
+                "fc_bias_const"
+            ],
+            "name": "logits_QuantizeLinear_Input",
+            "original": "Gemm",
+            "type": "Gemm"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 20,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 33,
+            "inputs": [
+                "logits_QuantizeLinear_Input"
+            ],
+            "name": "logits_QuantizeLinear_Output",
+            "original": "QuantizeLinear",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 20,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 34,
+            "inputs": [
+                "logits_QuantizeLinear_Output"
+            ],
+            "name": "logits",
+            "original": "DequantizeLinear",
+            "type": "Conversion"
+        }
+    ],
+    "model_files": [
+        "/Users/m1pro/trained_lstm/mnist_cnn.int8.onnx"
+    ],
+    "model_n_params": 93962,
+    "model_name": "mnist_cnn_int8",
+    "model_size": 375848,
+    "model_type": "onnx",
+    "name": "network",
+    "outputs": [
+        "logits_QuantizeLinear_Input_0_conversion"
+    ],
+    "ram_io_size": [
+        784,
+        10
+    ],
+    "ram_size": [
+        17600,
+        17600
+    ],
+    "report_version": 1.1,
+    "rom_cfact": 1.0,
+    "rom_heap_inspector": 2048,
+    "rom_inputs": [
+        {
+            "c_size": 784,
+            "c_type": "uint8_t",
+            "name": "input"
+        }
+    ],
+    "rom_n_macc": 7498142,
+    "rom_outputs": [
+        {
+            "c_size": 10,
+            "c_type": "uint8_t",
+            "name": "logits_QuantizeLinear_Input_0_conversion"
+        }
+    ],
+    "rom_size": 94664,
+    "strategy": "heap_overlay",
+    "tools_api_version": {
+        "major": 1,
+        "micro": 0,
+        "minor": 7
+    },
+    "tools_version": {
+        "extra": "19520",
+        "major": 8,
+        "micro": 0,
+        "minor": 1
+    },
+    "val_error": -1.0,
+    "val_error_desc": "None (None) #-1",
+    "val_metrics": []
+}

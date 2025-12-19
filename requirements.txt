@@ -1,0 +1,9 @@
+torch>=1.9.0
+torchvision>=0.10.0
+onnx>=1.10.0
+numpy>=1.19.0
+
+pyserial==3.5
+Pillow==10.0.0
+onnxruntime>=1.16.0
+onnxruntime-tools>=1.7.0

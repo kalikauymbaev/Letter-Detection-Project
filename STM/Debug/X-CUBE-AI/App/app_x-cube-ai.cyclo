@@ -1,0 +1,9 @@
+../X-CUBE-AI/App/app_x-cube-ai.c:64:20:emnist_letter_from_index	2
+../X-CUBE-AI/App/app_x-cube-ai.c:120:13:ai_log_err	2
+../X-CUBE-AI/App/app_x-cube-ai.c:133:12:ai_boostrap	4
+../X-CUBE-AI/App/app_x-cube-ai.c:176:12:ai_run	2
+../X-CUBE-AI/App/app_x-cube-ai.c:195:6:AI_SetBinaryImage	2
+../X-CUBE-AI/App/app_x-cube-ai.c:205:5:acquire_and_process_data	5
+../X-CUBE-AI/App/app_x-cube-ai.c:239:5:post_process	8
+../X-CUBE-AI/App/app_x-cube-ai.c:306:6:MX_X_CUBE_AI_Init	1
+../X-CUBE-AI/App/app_x-cube-ai.c:315:6:MX_X_CUBE_AI_Process	5
