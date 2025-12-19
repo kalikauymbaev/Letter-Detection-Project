@@ -7,7 +7,7 @@ This project aims to build and optimize a machine learning model to detect Latin
 ### File Breakdown
 
 1. **artifacts/**
-   This directory contains the saved models, quantization artifacts, and other intermediate files used during training and evaluation. These files are crucial for the deployment of the model in real-world applications, especially for embedded systems.
+   This directory contains the saved models, quantization artifacts and other intermediate files used during training and evaluation. These files are crucial for the deployment of the model in real-world applications, especially for embedded systems.
 
 2. **emnist/**
    This folder contains the dataset files related to the **EMNIST** (Extended MNIST) dataset, which is used to train and evaluate the character detection model. It consists of handwritten characters similar to the MNIST dataset, but includes letters as well as digits.
@@ -85,7 +85,7 @@ To train the model from scratch, run the following command:
 python train_and_quantize.py
 ```
 
-This will start the training process, and the model will be saved in the **artifacts/** directory.
+This will start the training process and the model will be saved in the **artifacts/** directory.
 
 ### 3. Test the Model (Handwriting App)
 
@@ -95,7 +95,7 @@ To test the model on drawn characters, run:
 python handwrite_app.py
 ```
 
-This will launch an application where you can draw a letter, and the model will predict it.
+This will launch an application where you can draw a letter and the model will predict it.
 
 ### 4. Quantization for Embedded Systems (STM)
 
@@ -107,4 +107,4 @@ Once the quantized model is ready, transfer the files from the **STM/** director
 
 ## Conclusion
 
-This project demonstrates how to train, optimize, and deploy a Latin letter detection model using the EMNIST dataset. With quantization, the model is optimized for efficient deployment on embedded systems like STM32. This solution can be applied in OCR applications, handwriting recognition systems, and other real-time embedded AI projects.
+This project demonstrates how to train, optimize and deploy a Latin letter detection model using the EMNIST dataset. With quantization, the model is optimized for efficient deployment on embedded systems like STM32. This solution can be applied in OCR applications, handwriting recognition systems and other real-time embedded AI projects.
