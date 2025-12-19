@@ -55,6 +55,8 @@ The **EMNIST** dataset is an extension of the original MNIST dataset, but it foc
 
 For this project, the **EMNIST Letters** dataset was used, which contains images of 26 uppercase and 26 lowercase Latin letters. These letters are handwritten by various individuals, providing a rich source of data for training a robust model for letter detection.
 
+Link for NIST official website: https://www.nist.gov/itl/products-and-services/emnist-dataset
+
 ## Quantization Process (STM)
 
 Quantization is the process of reducing the precision of the numbers used in a model's weights and activations, which results in a smaller model size and faster inference time. This is particularly useful for deploying deep learning models on embedded systems with limited computational resources.
